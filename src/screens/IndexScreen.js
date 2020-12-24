@@ -40,10 +40,11 @@ const IndexScreen = ({navigation}) => {
 
 IndexScreen.navigationOptions = ({navigation}) =>{ /// Adding something in the header of the app 
   return {
-    headerRight: <TouchableOpacity onPress= {()=> navigation.navigate('Create')}>
+    headerRight: () => (  <TouchableOpacity onPress= {()=> navigation.navigate('Create')}>
       <Entypo name="plus" size={24} color="black" />
 
     </TouchableOpacity> 
+    )
   
   }
 }
