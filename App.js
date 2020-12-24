@@ -3,7 +3,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import IndexScreen from './src/screens/IndexScreen';
-import { BlogProvider } from './src/context/BlogContext';  // curly braces are it is named export not export default
+import { Provider } from './src/context/BlogContext';  // curly braces are it is named export not export default
 
 const navigator = createStackNavigator(
   {
@@ -20,8 +20,8 @@ const App = createAppContainer(navigator); // instead of export default  createA
 
 export default () => {
   return (
-    <BlogProvider>
+    <Provider>
       <App />
-    </BlogProvider>
-  );
+    </Provider>
+  ); // Passing App as prop children so all the screen will be children of BlogProvider and data can be transfered to them
 };
