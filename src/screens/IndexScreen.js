@@ -3,6 +3,7 @@ import { View, Text, StyleSheet,FlatList, Button } from "react-native";
 import {Context} from "../context/BlogContext";
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Entypo } from '@expo/vector-icons'; 
 import {ScrollView} from 'react-native-gesture-handler'
 
 const IndexScreen = ({navigation}) => {
@@ -35,6 +36,18 @@ const IndexScreen = ({navigation}) => {
     </View>
   );
 };
+
+IndexScreen.navigationOptions = ({navigation}) =>{ /// Adding something in the header of the app 
+  return {
+    headerRight: <TouchableOpacity onPress= {()=> navigation.navigate('Create')}>
+      <Entypo name="plus" size={24} color="black" />
+
+    </TouchableOpacity> 
+  
+  }
+}
+
+
 const style = StyleSheet.create({
   blogStyle: {
     borderColor: 'black',
