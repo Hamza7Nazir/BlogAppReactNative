@@ -7,12 +7,12 @@ import { Entypo } from '@expo/vector-icons';
 import {ScrollView} from 'react-native-gesture-handler'
 
 const IndexScreen = ({navigation}) => {
-    const {state, addBlogPost, deleteBlogPost} = useContext(Context);
+    const {state, deleteBlogPost} = useContext(Context);
     console.log(state);
   return (
     <View>
 
-      <Button title='Add Blog Post' onPress= {addBlogPost}/>
+      
       <FlatList
         data = {state}
         keyExtractor = {(obj)=> obj.title}
@@ -23,6 +23,7 @@ const IndexScreen = ({navigation}) => {
          
            <View style= {style.blogStyle}>
           <Text style = {style.textStyle}>{item.title} {item.id}</Text>
+          <Text style = {style.textStyle}>{item.content}</Text>
           <TouchableOpacity onPress= { ()=> deleteBlogPost(item.id)}>
           <AntDesign name="delete"  style= {style.deleteStyle}/>
 

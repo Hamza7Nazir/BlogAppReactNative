@@ -32,7 +32,10 @@ const ShowScreen = ({navigation}) => {
 
             <Button
             title= 'Add Blog Post'
-            onPress = {()=> addBlogPost(title,content) }  
+            onPress = {
+                ()=> addBlogPost(title,content, ()=>  navigation.navigate('Index'))  // sending navigation as a call back function
+                 
+            }  
             />
           </View>
       )

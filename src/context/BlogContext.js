@@ -13,8 +13,9 @@ const blogReducer = (state, action) => {
 };
 
 const addBlogPost = (dispatch) => {
-  return (title, content) => {
+  return (title, content, callback) => {
     dispatch({ type: "add_blogpost", payload: {title, content} }); // {title: tilte, content: content}
+    callback(); // this will take us to Index page
   };
 };
 
