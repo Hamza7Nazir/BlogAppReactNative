@@ -22,8 +22,7 @@ const IndexScreen = ({navigation}) => {
 
          
            <View style= {style.blogStyle}>
-          <Text style = {style.textStyle}>{item.title} {item.id}</Text>
-          <Text style = {style.textStyle}>{item.content}</Text>
+          <Text style = {style.textStyle}>{item.title} -  {item.content} -  {item.id}</Text>
           <TouchableOpacity onPress= { ()=> deleteBlogPost(item.id)}>
           <AntDesign name="delete"  style= {style.deleteStyle}/>
 

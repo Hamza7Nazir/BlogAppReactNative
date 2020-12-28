@@ -22,6 +22,7 @@ const ShowScreen = ({ navigation }) => {
   return (
     <View style={style.basicStyle}>
       <Text>{blogPost.title}</Text>
+      <Text>{blogPost.content}</Text>
     </View>
   );
 };

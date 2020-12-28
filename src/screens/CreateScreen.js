@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { Context } from "../context/BlogContext";
+import BlogPostForms from "../components/BlogPostForms";
+import BlogPostForm from "../components/BlogPostForms";
 
 const ShowScreen = ({ navigation }) => {
   const { addBlogPost } = useContext(Context);
@@ -11,7 +13,17 @@ const ShowScreen = ({ navigation }) => {
 
   return (
     <View style={style.ParentStyle}>
-      <Text style={style.titleStyle}>Enter Title</Text>
+    <BlogPostForm
+    TitleLabel = "Enter Title"
+    ContentLabel = "Enter Content"
+    TitleValue = {title}
+    ContentValue = {content}
+    ChangeTitle = {(val)=> setTitle(val)}
+    ChangeContnet = {(val)=> setContent(val)}
+    ButtonName = "Add Blog Post"
+    pressed = {() => addBlogPost(title, content, () => navigation.navigate("Index"))} // sending navigation as a call back function
+    />
+      {/* <Text style={style.titleStyle}>Enter Title</Text>
 
       <TextInput
         style={style.inputStyle}
@@ -31,7 +43,7 @@ const ShowScreen = ({ navigation }) => {
         onPress={
           () => addBlogPost(title, content, () => navigation.navigate("Index")) // sending navigation as a call back function
         }
-      />
+      /> */}
     </View>
   );
 };

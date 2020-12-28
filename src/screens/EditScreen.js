@@ -2,31 +2,42 @@ import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { Context } from "../context/BlogContext";
+import BlogPostForm from "../components/BlogPostForms";
 
 const EditScreen = ({ navigation }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState(""); // useState(blogPost.title)  better approach
+  const [content, setContent] = useState(""); // useState(blogPost.content)  alternate way to useEffect
 
-  const { state } = useContext(Context);
+  const { state,addBlogPost } = useContext(Context);
   const id = navigation.getParam("id");
 
   const blogPost = state.find((blogPost) => blogPost.id === id);
-  
-//   const setValues = () =>{  // how can this be used ?
-//     setContent(blogPost.content);
-//     setTitle(blogPost.title);  
-//   }
- 
 
+  //   const setValues = () =>{  // how can this be used ?
+  //     setContent(blogPost.content);
+  //     setTitle(blogPost.title);
+  //   }
 
-  useEffect( () =>{ // Runs only first time if second argument is empty list
-    setContent(blogPost.content);  // This is working
+  useEffect(() => {
+    // Runs only first time if second argument is empty list
+    setContent(blogPost.content); // This is working
     setTitle(blogPost.title); // setting values to fill input fields
-  
-}, [])
-  return (
+  }, []);
+
+  return ( 
     <View style={style.basicStyle}>
-      <Text style={style.titleStyle}>Enter Title</Text>
+  <BlogPostForm
+    TitleLabel = "Edit Title"
+    ContentLabel = "Edit Content"
+    TitleValue = {title}
+    ContentValue = {content}
+    ChangeTitle = {(val)=> setTitle(val)}
+    ChangeContnet = {(val)=> setContent(val)}
+    ButtonName = "Save"
+    pressed = { () => addBlogPost(title, content, () => navigation.navigate("Index")) } // sending navigation as a call back function
+    
+  />
+      {/* <Text style={style.titleStyle}>Enter Title</Text>
 
       <TextInput
         style={style.inputStyle}
@@ -46,7 +57,7 @@ const EditScreen = ({ navigation }) => {
         onPress={
           () => addBlogPost(title, content, () => navigation.navigate("Index")) // sending navigation as a call back function
         }
-      />
+      /> */}
     </View>
   );
 };
